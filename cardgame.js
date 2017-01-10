@@ -7,8 +7,6 @@ var express 		    = require("express"),
 		mongoose 			  = require("mongoose"),
 		flash				    = require("connect-flash"),
 		methodOverride  = require("method-override"),
-		//Campground 		  = require("./models/campground"),
-		//Comment 			  = require("./models/comment"),
 		passport			  = require("passport"),
 		LocalStrategy   = require("passport-local");
 
@@ -27,6 +25,48 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
 
+// Passport config
+app.use(require("express-session")({
+	secret: "Charlie and Tucker are the best dogs",
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// Sets the "local" strategy (as opposed to "twitter" or "facebook" etc...)
+//passport.use(new LocalStrategy(User.authenticate()));
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
+
+
+// Default middleware
+app.use(function(req, res, next)
+{
+	//res.locals.currentUser = req.user;
+	//res.locals.error = req.flash("error");
+	//res.locals.success = req.flash("success");
+	next();
+});
 
 
 
+// ROUTES  ==============================
+
+var indexRoutes					= require("./routes/index");
+var threeThirteenRoutes	= require("./routes/threeThirteen");
+
+app.use(indexRoutes);
+app.use("/games/three-thirteen", threeThirteenRoutes);
+//p.use("/campgrounds/:id/comments", commentRoutes);
+
+
+// SERVER  ==============================
+
+// depending on the environment, process.env.PORT might be set - if not, then use a default value (in this case, 3001)
+var port = Number(process.env.PORT || 3001);
+
+// Run the app
+app.listen(port, function()
+{
+	console.log("CardGames app running!");
+});

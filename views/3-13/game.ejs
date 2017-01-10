@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+<div class="container">
+  <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#init-modal" id="initMessage">Please initialize game</button>
+
+  <div class="table-responsive hidden" id="scorecardDiv">
+    <!-- Scorecard will be placed here by JS -->
+  </div><!-- .table-responsive -->
+</div><!-- .container -->
+
+<!-- *********************************************** -->
+<!-- ***                  MODALS                 *** -->
+<!-- *********************************************** -->
+
+  <% include ./partials/roundModal  %>
+  <% include ./partials/initModal   %>
+  <% include ./partials/rulesModal  %>
+
+<% include ./partials/footer %>
