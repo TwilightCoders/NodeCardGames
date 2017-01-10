@@ -14,7 +14,7 @@ there is a tie).
 
 TODOS:
 
-* Convert to Node.js
+* Convert to Node.js - ✓ 
   * Make the scorecard RESTful, with a unique ID
 * Allow guest users to view the scorecard (but not edit it) - do this with a unique id useable for viewing
 * Convert to Semantic UI
