@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<div class="container">
+  
+  <h1>Create New Game of Three Thirteen</h1>
+  
+  <form action="/games/three-thirteen/new" method="POST">
+    <% include ./partials/_initForm %>
+    <input type="Submit" value="Start Game!" class="btn btn-primary btn-lg btn-block">
+  </form>
+  
+</div><!-- .container -->
+
+<!-- *********************************************** -->
+<!-- ***                  MODALS                 *** -->
+<!-- *********************************************** -->
+
+  <% include ./partials/rulesModal  %>
+
+<%
+// Set the static js file
+threeThirteen = { js: "new.js" };
+%>
+
+<% include ./partials/footer %>

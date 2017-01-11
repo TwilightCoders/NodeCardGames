@@ -41,7 +41,7 @@ var game =
     $("input[name='numPlayers']").change(function()
     {
       self.data.players = Number($(this).val());
-      self.data.configurePlayerNames(self.data.players);
+      self.configurePlayerNames(self.data.players);
     });
   },
   

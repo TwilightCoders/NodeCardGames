@@ -9,12 +9,21 @@ var passport = require("passport");
 // INDEX
 router.get("/", function(req, res)
 {
-  res.render("3-13/game");
+  res.render("3-13/static");
 });
 
 // NEW - show the form to make a new game (will be saved to DB)
+router.get("/new", function(req, res) 
+{
+  res.render("3-13/new");
+});
 
 // CREATE - process the new game
+router.post("/new", function(req, res)
+{
+  console.log(req.body);
+  res.send("Created game post route triggered\n" + req.body);
+});
 
 // SHOW - show the game - everyone can see this, and will update using ajax
 

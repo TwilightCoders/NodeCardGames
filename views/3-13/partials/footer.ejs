@@ -11,7 +11,19 @@
   crossorigin="anonymous"></script>
 <!-- bootbox -->
 <script type="text/javascript" src="/scripts/bootbox.min.js"></script>
+
+<%
+// Check to see if threeThirteen.js has been set, and if so, use that value to pull the correct local javascript file
+if (threeThirteen.js)
+{
+%>
+
 <!-- app's js -->
-<script type="text/javascript" src="/scripts/3-13_edit.js"></script>
+<script type="text/javascript" src="/scripts/threeThirteen/<%= threeThirteen.js %>"></script>
+
+<%
+}
+%>
+
 </body>
 </html>

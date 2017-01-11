@@ -39,9 +39,10 @@ app.use(passport.session());
 //passport.deserializeUser(User.deserializeUser());
 
 
-// Default middleware
+// Initialize global variables available everywhere
 app.use(function(req, res, next)
 {
+	//res.locals.threeThirteen = { js: "static.js" };
 	//res.locals.currentUser = req.user;
 	//res.locals.error = req.flash("error");
 	//res.locals.success = req.flash("success");
@@ -57,7 +58,6 @@ var threeThirteenRoutes	= require("./routes/threeThirteen");
 
 app.use(indexRoutes);
 app.use("/games/three-thirteen", threeThirteenRoutes);
-//p.use("/campgrounds/:id/comments", commentRoutes);
 
 
 // SERVER  ==============================
