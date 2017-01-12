@@ -1,13 +1,105 @@
+<%
+// Set parameters for this view
+threeThirteen = 
+{
+  js: "new.js"
+};
+%>
+
 <% include ./partials/header %>
 
 <div class="container">
   
-  <h1>Create New Game of Three Thirteen</h1>
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>Create New Game of Three Thirteen</h1>
   
-  <form action="/games/three-thirteen/new" method="POST">
-    <% include ./partials/_initForm %>
-    <input type="Submit" value="Start Game!" class="btn btn-primary btn-lg btn-block">
-  </form>
+      <form action="/games/three-thirteen/new" method="POST">
+        
+        <h2>Number of players</h2>
+
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary btn-lg active">
+            <input type="radio" name="numPlayers" value="2" checked>2
+          </label>
+          <label class="btn btn-primary btn-lg">
+            <input type="radio" name="numPlayers" value="3">3
+          </label>
+          <label class="btn btn-primary btn-lg">
+            <input type="radio" name="numPlayers" value="4">4
+          </label>
+          <label class="btn btn-primary btn-lg">
+            <input type="radio" name="numPlayers" value="5">5
+          </label>
+          <label class="btn btn-primary btn-lg">
+            <input type="radio" name="numPlayers" value="6">6
+          </label>
+        </div><!-- .btn-group -->
+
+        <h2>Enter Names:</h2>
+          
+          <div id="initPlayerNames">
+
+            <!--<div class="row">-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 1</span>
+                  <input class="form-control" type="text" name="player1name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+
+            <!--<div class="row">-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 2</span>
+                  <input class="form-control" type="text" name="player2name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+            
+            <!--<div class="row hidden">-->
+              <div class="form-group hidden">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 3</span>
+                  <input class="form-control" type="text" name="player3name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+
+            <!--<div class="row hidden">-->
+              <div class="form-group hidden">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 4</span>
+                  <input class="form-control" type="text" name="player4name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+            
+            <!--<div class="row hidden">-->
+              <div class="form-group hidden">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 5</span>
+                  <input class="form-control" type="text" name="player5name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+
+            <!--<div class="row hidden">-->
+              <div class="form-group hidden">
+                <div class="input-group">
+                  <span class="input-group-addon">Player 6</span>
+                  <input class="form-control" type="text" name="player6name">
+                </div><!-- .input-group -->
+              </div><!-- .form-group -->
+            <!--</div><!-- .row -->
+          
+          </div><!-- #initPlayerNames -->
+        <input type="Submit" value="Start Game!" class="btn btn-primary btn-lg btn-block">
+      </form>
+      
+    </div><!-- col-sm-8 -->
+  </div><!-- .row -->
   
 </div><!-- .container -->
 
@@ -16,10 +108,5 @@
 <!-- *********************************************** -->
 
   <% include ./partials/rulesModal  %>
-
-<%
-// Set the static js file
-threeThirteen = { js: "new.js" };
-%>
 
 <% include ./partials/footer %>

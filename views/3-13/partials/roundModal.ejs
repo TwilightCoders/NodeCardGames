@@ -7,74 +7,62 @@
         <h1 class="h1title">Complete Round for 3's</h1>
       </div>
       <div class="modal-body">
-        <form id="roundForm" onsubmit="return false;">
-          
-          <div id="roundScores">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <form id="roundForm" onsubmit="return false;">
 
-            <div class="row">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 1</span>
-                  <input class="form-control" type="number" name="player1score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
+              <div id="roundScores">
 
-            <div class="row">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 2</span>
-                  <input class="form-control" type="number" name="player2score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
-            
-            <div class="row hidden">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 3</span>
-                  <input class="form-control" type="number" name="player3score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 1</span>
+                    <input class="form-control" type="number" name="player1score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
 
-            <div class="row hidden">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 4</span>
-                  <input class="form-control" type="number" name="player4score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
-            
-            <div class="row hidden">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 5</span>
-                  <input class="form-control" type="number" name="player5score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 2</span>
+                    <input class="form-control" type="number" name="player2score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
 
-            <div class="row hidden">
-              <div class="form-group col-sm-8">
-                <div class="input-group">
-                  <span class="input-group-addon">Player 6</span>
-                  <input class="form-control" type="number" name="player6score">
-                </div><!-- .input-group -->
-              </div><!-- .form-group -->
-            </div><!-- .row -->
-            
-            
-          </div><!-- #roundScores -->
-          
-          <div class="row">
-            <div class="col-xs-12">
+                <div class="form-group hidden">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 3</span>
+                    <input class="form-control" type="number" name="player3score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
+
+                <div class="form-group hidden">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 4</span>
+                    <input class="form-control" type="number" name="player4score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
+
+                <div class="form-group hidden">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 5</span>
+                    <input class="form-control" type="number" name="player5score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
+
+                <div class="form-group hidden">
+                  <div class="input-group">
+                    <span class="input-group-addon">Player 6</span>
+                    <input class="form-control" type="number" name="player6score">
+                  </div><!-- .input-group -->
+                </div><!-- .form-group -->
+
+
+              </div><!-- #roundScores -->
+
               <button class="btn btn-primary btn-lg btn-block" id="completeScores" onclick="game.completeRound();">Complete Round!</button>
-            </div>
-          </div>
 
-        </form>
+            </form>
+          </div><!-- .col-sm-8 -->
+        </div><!-- .row -->
       </div><!-- .modal-body -->
     </div><!-- .modal-content -->
   </div><!-- .modal-dialog -->

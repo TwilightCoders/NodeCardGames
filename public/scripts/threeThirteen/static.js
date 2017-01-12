@@ -97,33 +97,33 @@ var game =
   configurePlayerNames: function(num)
   {
     // To start, make all inputs hidden, then enable them using switch case logic by cascading down from num
-    $("#initPlayerNames div.row").addClass("hidden");
-    $("#roundScores div.row").addClass("hidden");
+    $("#initPlayerNames div.form-group").addClass("hidden");
+    $("#roundScores div.form-group").addClass("hidden");
     
     // Cascade through each case for the number of elements in the initPlayerNames, and roundScores modals
     switch(num)
     {
       // We won't use a break statement in any of these cases, because we want to cascade through all of them to enable all the valid elements
       case 6:
-        $("#initPlayerNames div.row:nth-of-type(6)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(6)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(6)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(6)").removeClass("hidden");
       case 5:
-        $("#initPlayerNames div.row:nth-of-type(5)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(5)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(5)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(5)").removeClass("hidden");
       case 4:
-        $("#initPlayerNames div.row:nth-of-type(4)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(4)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(4)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(4)").removeClass("hidden");
       case 3:
-        $("#initPlayerNames div.row:nth-of-type(3)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(3)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(3)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(3)").removeClass("hidden");
       case 2:
       // Case 2 and default are the same thing, just being thorough in case some weird number comes along
       default:
-        $("#initPlayerNames div.row:nth-of-type(2)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(2)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(2)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(2)").removeClass("hidden");
 
-        $("#initPlayerNames div.row:nth-of-type(1)").removeClass("hidden");
-        $("#roundScores div.row:nth-of-type(1)").removeClass("hidden");
+        $("#initPlayerNames div.form-group:nth-of-type(1)").removeClass("hidden");
+        $("#roundScores div.form-group:nth-of-type(1)").removeClass("hidden");
         break;
     }
   },
