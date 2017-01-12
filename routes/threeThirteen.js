@@ -6,15 +6,8 @@ var passport = require("passport");
 // 3-13 ROUTES  ====================================
 // note, all routes will prepend /games/three-thirteen to whatever render uses
 
-
-// STATIC route (for a static game run entirely locally)
-router.get("/static", function(req, res)
-{
-  res.render("3-13/static");
-});
-
-
-// INDEX
+// INDEX - redirect to "new" since we need to make a new game before we can do anything (no need to view all games)
+// Perhaps in the future, make a simple "would you like to view a game, or start a new game?"
 router.get("/", function(req, res)
 {
   res.redirect("/games/three-thirteen/new");
