@@ -6,9 +6,10 @@ var express 		    = require("express"),
 		bodyParser 		  = require("body-parser"),
 		mongoose 			  = require("mongoose"),
 		flash				    = require("connect-flash"),
-		methodOverride  = require("method-override"),
-		passport			  = require("passport"),
-		LocalStrategy   = require("passport-local");
+		methodOverride  = require("method-override");//,
+		//passport			  = require("passport"),
+		//LocalStrategy   = require("passport-local"),
+		//ThreeThirteen		= require("./models/threeThirteen");
 
 
 // CONFIGURATION  =========================================
@@ -25,7 +26,8 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 
 
-// Passport config
+/*
+// Passport config - but, we're not doing auth at the moment
 app.use(require("express-session")({
 	secret: "Charlie and Tucker are the best dogs",
 	resave: false,
@@ -47,8 +49,7 @@ app.use(function(req, res, next)
 	//res.locals.error = req.flash("error");
 	//res.locals.success = req.flash("success");
 	next();
-});
-
+});*/
 
 
 // ROUTES  ==============================
