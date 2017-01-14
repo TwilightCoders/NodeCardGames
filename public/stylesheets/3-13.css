@@ -2,3 +2,19 @@ ul.navbar-nav li a[data-toggle="modal"]
 {
   outline: none;
 }
+
+body
+{
+  padding-bottom: 70px;
+}
+
+button,
+button:active,
+button:focus, 
+button:hover,
+.btn,
+.btn:active, 
+.btn:focus, 
+.btn:hover{   
+    outline:none !important;
+}

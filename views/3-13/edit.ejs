@@ -1,19 +1,40 @@
 <% include ./partials/header %>
 
-<div class="container">
-  <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#init-modal" id="initMessage">Please initialize game</button>
+<%
+// Set parameters for this view
+threeThirteen = 
+{
+  js: "edit.js"
+};
+%>
 
-  <div class="table-responsive hidden" id="scorecardDiv">
-    <!-- Scorecard will be placed here by JS -->
+<div class="container">
+  <div class="table-responsive" id="scorecardDiv">
+    <% include ./partials/scorecard %>
   </div><!-- .table-responsive -->
+  
+  <%
+  if (game && (game.round < game.numRounds))
+  {
+    // Using the 'getRoundLabel' helper function - see below for usage
+    var roundName = getRoundLabel(game.round);
+
+    // If the round number is greater than 10, set it to be the card name (J/Q/K) rather than 11-13
+    //roundName = (roundName === 11) ? "Jack" : roundName;
+    //roundName = (roundName === 12) ? "Queen" : roundName;
+    //roundName = (roundName === 13) ? "King" : roundName;
+  }
+  %>
+  <button class="btn btn-primary btn-lg btn-block">Complete Round for <%= roundName %>'s</button>
+  
 </div><!-- .container -->
+
 
 <!-- *********************************************** -->
 <!-- ***                  MODALS                 *** -->
 <!-- *********************************************** -->
 
   <% include ./partials/roundModal  %>
-  <% include ./partials/initModal   %>
   <% include ./partials/rulesModal  %>
 
 <% include ./partials/footer %>

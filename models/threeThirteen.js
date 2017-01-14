@@ -5,7 +5,7 @@ var threeThirteenSchema = new mongoose.Schema(
 	numPlayers:   Number,       
 	playerNames:  [ String ], // Array of strings
   scores:       [],         // using mixed type, so that we can make a 2d array (we can push [] to this [])
-  //numRounds:    { type: Number, default: 11 },  // No need to store this in DB - this is universal and not variable
+  numRounds:    { type: Number, default: 11 },
   round:        { type: Number, default: 1 }
 });
 

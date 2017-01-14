@@ -1,3 +1,5 @@
+//  routes/threeThirteen.js
+
 var express       = require("express"),
     router 	      = express.Router(),
     ThreeThirteen = require("../models/threeThirteen");
@@ -10,10 +12,7 @@ var express       = require("express"),
 // Perhaps in the future, make a simple "would you like to view a game, or start a new game?"
 router.get("/", function(req, res)
 {
-  // Just for now, drop all games from the DB because we'll be doing a lot of testing, and don't need more than one or two
-  ThreeThirteen.remove({});
-  
-  // Now go to the 'NEW' route to make a new game
+  // Go to the 'NEW' route to make a new game
   res.redirect("/games/three-thirteen/new");
 });
 
@@ -21,6 +20,10 @@ router.get("/", function(req, res)
 // NEW - show the form to make a new game (will be saved to DB)
 router.get("/new", function(req, res) 
 {
+  
+  // Just for now, drop all games from the DB because we'll be doing a lot of testing, and don't need more than one or two
+  ThreeThirteen.remove({});
+  
   res.render("3-13/new");
 });
 
@@ -28,13 +31,14 @@ router.get("/new", function(req, res)
 // CREATE - process the new game
 router.post("/new", function(req, res)
 {
-  // Get the variables from the new route, and make a game object to send to mongo
-  var numPlayers  = req.body.numPlayers;
-  var scores      = [];  // This will be kept track of as scores[round][player]
+  var numRounds = 11;
   
-  // Set the first round of the game to have an array equal to the number of players
-  for (var playerIndex = 0; playerIndex < numPlayers; playerIndex++)
-    scores[0] = [];
+  // Get the variables from the new route, and make a game object to send to mongo
+  var numPlayers  = parseInt(req.body.numPlayers);
+  var scores      = new Array(numRounds);  // Creating 11 rounds worth of arrays
+  
+  for (var round = 0; round < numRounds; round++)
+    scores[round] = new Array(numPlayers);
   
   // Set all the game variables
   var game = {
@@ -49,13 +53,15 @@ router.post("/new", function(req, res)
     if(err)
     {
       console.log(err);
+      // Redirect to the 'new' page
+      res.redirect("/games/three-thirteen/new");
     }
     else
     {
       console.log(newGame);
+      // Redirect to the 'edit' page
+      res.redirect("/games/three-thirteen/" + newGame._id + "/edit");
     }
-    
-    res.redirect("/games/three-thirteen/new");
   });
   
   // NEXT STEPS:
@@ -66,9 +72,31 @@ router.post("/new", function(req, res)
 
 
 // SHOW - show the game - everyone can see this, and will update using ajax
+// to start, just somehow get and format a game object from the mongodb and get it to the local console
+router.get("/:id", function(req, res)
+{
+  res.send("The normal show route");
+});
+
+// SHOW json - this will get the json value of the current game
+router.get("/:id/json", function(req, res)
+{
+  res.send("The json show route");
+});
 
 
 // EDIT - this is where the scorekeeper will operate - will asyncronously update the DB so the SHOW page can query it for updates
+router.get("/:id/edit", function(req, res)
+{
+  // Find the game from mongo
+  ThreeThirteen.findById(req.params.id, function(err, game){
+    res.render("3-13/edit", {game: game});
+  });
+  
+  // Make the HTML document - and pass along the game mongo object to the render page
+  
+  // Within the EDIT document, use the mongo object to make a basic javascript settings object, which can then be called from the 'app' object
+});
 
 
 // UPDATE - process the updates from edit
@@ -78,6 +106,7 @@ router.post("/new", function(req, res)
 
 
 // END OF ROUTES  ===============================================================
+
 
 // Exports the routes set in the 'router' variable to the main app
 module.exports = router;

@@ -1,0 +1,15 @@
+<%
+// HELPER FUNCTIONS  ============================================================
+getRoundLabel = function(num)
+{
+  // Incriment by 2, since round 1 represents "level 3", round 2 === "level 4" etc... any code using this func should account for this
+  var roundName = (num + 2);
+
+  // If the round number is greater than 10, set it to be the card name (J/Q/K) rather than 11-13
+  roundName = (roundName === 11) ? "Jack" : roundName;
+  roundName = (roundName === 12) ? "Queen" : roundName;
+  roundName = (roundName === 13) ? "King" : roundName;
+
+  return roundName;
+}
+%>

@@ -12,18 +12,27 @@
 <!-- bootbox -->
 <script type="text/javascript" src="/scripts/bootbox.min.js"></script>
 
-<%
-// Check to see if threeThirteen.js has been set, and if so, use that value to pull the correct local javascript file
-if (threeThirteen.js)
-{
-%>
-
+<% if (threeThirteen.js) { // Check to see if threeThirteen.js has been set, and if so, use that to pull the correct local JS file %>
 <!-- app's js -->
 <script type="text/javascript" src="/scripts/threeThirteen/<%= threeThirteen.js %>"></script>
+<% } %>
 
-<%
-}
-%>
+
+<% if (typeof game !== "undefined") { %>
+<!-- game settings, to be used within the app game object -->
+<script>
+$(document).ready(function()
+{
+  var settings =
+  {
+    
+  };
+  
+  // Start the game now that we have settings initialized
+  //app.init();
+});
+</script>
+<% } %>
 
 </body>
 </html>

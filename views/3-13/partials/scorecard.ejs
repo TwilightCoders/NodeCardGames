@@ -1,0 +1,69 @@
+<% if (game) { %>
+
+<table class="table table-bordered" id="scorecard">
+  <thead>
+    <tr>
+      <%
+      // Determine what bootstrap column value to assign the player columns - using 10 so that the 1st column will be at least 2 units wide
+      var columnWidth = Math.floor(10 / game.numPlayers);
+
+      // Set the first column to be the remainder of what the players columns add up to
+      var firstColumn = 12 - (columnWidth * game.numPlayers);
+
+      // If firstColumn is unreasonably large than the columnWidth, then make the first column narrower
+      if (firstColumn > 4) firstColumn = 3; %>
+      
+      <th class="col-xs-<%= firstColumn %>">Round &amp; Dealer</th>
+      
+      <%
+      for (var player = 0; player < game.numPlayers; player++) { %>
+      <th class="col-xs-<%= columnWidth %>"><%= game.playerNames[player] %></th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+    // Variables to be used to calculate who should be the dealer of the given round
+    var dealerName, dealerIndex, roundName, text = "";
+
+    // Start loop to configure the rows - keep track of the round we are configuring within 'i'
+    for (var i = 0; i < game.numRounds; i++)
+    {
+      // Using the 'getRoundLabel' helper function - see below for usage
+      roundName = getRoundLabel(i + 1);
+
+      // Calculate the index of which player is due to be selected dealer, then get that player name
+      dealerIndex = i % game.numPlayers;
+      dealerName = game.playerNames[dealerIndex];
+
+      // set the contents of the new row to append to the table
+      text += "<tr>\n<th scope=\"row\">" + roundName + " - " + dealerName + "</th>\n"
+      
+      // Add empty td's to populate the player columns
+      for (var player = 0; player < game.numPlayers; player++)
+      {
+        text += "<td></td>";
+      }
+      
+      // Finish the tr
+      text += "</tr>\n";
+    }
+    %>
+    <%- text %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total Scores:</th>
+      <% // Add empty th's to the footer so that scores can be populated
+      for (var player = 0; player < game.numPlayers; player++) { %>
+        <th></th>
+      <% } %>
+    </tr>
+  </tfoot>
+</table>
+
+<% } else { %>
+
+  No game object provided, cannot initialize the scorecard.
+
+<% } %>

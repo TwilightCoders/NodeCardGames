@@ -1,3 +1,5 @@
+//  public/scripts/threeThirteen/edit.js
+
 // This is the JS file that will be run by the scorekeeper, this is the main, & largest JS file
 
 var game =
@@ -492,4 +494,4 @@ var game =
 };
 
 
-game.init();
+//game.init();
