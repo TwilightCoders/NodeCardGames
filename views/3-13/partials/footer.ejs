@@ -1,8 +1,8 @@
   
 <!-- jQuery -->
 <script
-  src="http://code.jquery.com/jquery-3.1.1.slim.min.js"
-  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <!-- bootstrap -->
 <script
@@ -23,13 +23,11 @@
 <script>
 $(document).ready(function()
 {
-  var settings =
-  {
-    
-  };
-  
-  // Start the game now that we have settings initialized
-  //app.init();
+  // Initial game data (will be updated by ajax)
+  game.data.shortId = "<%- game.shortId %>";
+
+  // Get the game data, then 
+  game.init();
 });
 </script>
 <% } %>

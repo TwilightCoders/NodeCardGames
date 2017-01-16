@@ -4,6 +4,59 @@
 
 var game =
 {
+  data: { },
+
+
+  init: function(shortId)
+  {
+    // Save 'this' to a variable, so that it can be used in callback function
+    var game = this;
+
+    // Get the data from the server and set it to this.data
+    this.getGameData().done(function()
+    {
+      // Run any init code in here
+    });
+  },
+
+
+  // Get the game data from the server
+  getGameData: function(shortId)
+  {
+    var id = (typeof shortId === "undefined") ? this.data.shortId : shortId;
+
+    var self = this;
+
+    return $.getJSON("/games/three-thirteen/" + id + "/json", function(data)
+    {
+      self.data = data;
+    });
+  },
+
+
+  // Send the game data to the server to be updated
+  updateGameData: function()
+  {
+    var self = this;
+
+    return $.ajax({
+      method: "PUT",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      url: "/games/three-thirteen/" + self.data._id,
+      data: JSON.stringify(self.data)
+    });
+  }
+}
+
+
+
+
+
+
+
+var app =
+{
   // Main game data - will be initialized with the initialValues object (kept separate for easy resets)
   data: {},
   

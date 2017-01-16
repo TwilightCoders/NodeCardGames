@@ -58,7 +58,6 @@ router.post("/new", function(req, res)
     }
     else
     {
-      console.log(newGame);
       // Redirect to the 'edit' page
       res.redirect("/games/three-thirteen/" + newGame._id + "/edit");
     }
@@ -81,7 +80,18 @@ router.get("/:id", function(req, res)
 // SHOW json - this will get the json value of the current game
 router.get("/:id/json", function(req, res)
 {
-  res.send("The json show route");
+  res.set('Content-Type', 'application/json');
+  ThreeThirteen.findOne({shortId: req.params.id}, function(err, foundGame)
+  {
+    if(err)
+    {
+      res.send(JSON.stringify(err));
+    }
+    else
+    {
+      res.send(JSON.stringify(foundGame));
+    }
+  })
 });
 
 
@@ -100,6 +110,23 @@ router.get("/:id/edit", function(req, res)
 
 
 // UPDATE - process the updates from edit
+router.put("/:id", function(req, res)
+{
+  console.log("Passed in data:\n" + JSON.stringify(req.body) + "\n\n");
+
+  ThreeThirteen.findOneAndUpdate({shortId: req.body.shortId}, req.body, {new: true}, function(err, updatedGame)
+  {
+    if(err)
+    {
+      res.send(err);
+    }
+    else
+    {
+      //console.log("Updated game:\n" + updatedGame);
+      res.status(200).send(updatedGame);
+    }
+  });
+});
 
 
 // DELETE - delete the game from the DB (Probably will never be used)

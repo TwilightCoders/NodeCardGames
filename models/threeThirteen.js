@@ -1,7 +1,10 @@
-var mongoose = require("mongoose");
+var mongoose  = require("mongoose"),
+    shortId   = require("shortid");
 
 var threeThirteenSchema = new mongoose.Schema(
 {
+  /* _id will be added automatically by mongoose */
+  shortId:      {type: String, unique: true, default: shortId.generate},
 	numPlayers:   Number,       
 	playerNames:  [ String ], // Array of strings
   scores:       [],         // using mixed type, so that we can make a 2d array (we can push [] to this [])

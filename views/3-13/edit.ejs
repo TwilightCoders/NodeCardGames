@@ -14,18 +14,20 @@ threeThirteen =
   </div><!-- .table-responsive -->
   
   <%
-  if (game && (game.round < game.numRounds))
+  if (typeof game !== "undefined")
   {
     // Using the 'getRoundLabel' helper function - see below for usage
     var roundName = getRoundLabel(game.round);
-
-    // If the round number is greater than 10, set it to be the card name (J/Q/K) rather than 11-13
-    //roundName = (roundName === 11) ? "Jack" : roundName;
-    //roundName = (roundName === 12) ? "Queen" : roundName;
-    //roundName = (roundName === 13) ? "King" : roundName;
-  }
   %>
-  <button class="btn btn-primary btn-lg btn-block">Complete Round for <%= roundName %>'s</button>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary btn-lg btn-block" id="scorecardCompleteBtn">Complete Round for <%= roundName %>'s</button>
+    </div>
+    <div class="col-sm-6">
+      <a href="/games/three-thirteen/<%= game.shortId %>/json" class="btn btn-warning btn-lg btn-block">Share Game</a>
+    </div>
+  </div>
+  <% } %>
   
 </div><!-- .container -->
 

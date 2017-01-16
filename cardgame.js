@@ -18,6 +18,8 @@ var express 		    = require("express"),
 mongoose.connect(process.env.MONGOLAB_URI ||"mongodb://localhost/cardgame");
 // Enable body-parser so that req.body will contain passed in parameters to the route
 app.use(bodyParser.urlencoded({extended: true}));
+// Parse json with body parser
+app.use(bodyParser.json())
 // Enable the /public directory to contain static files (CSS, JavaScript, etc...)
 app.use(express.static(__dirname + "/public"));
 // Use the 'ejs' engine to parse .ejs files
